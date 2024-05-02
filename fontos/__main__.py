@@ -4,12 +4,14 @@ import sys
 import os
 
 def main():
-    font_folder = 'fonts'
     subtitle_filename = sys.argv[1] if len(sys.argv) > 1 else 'subtitle.ass'
 
     if not os.path.exists(subtitle_filename):
         print(f'{subtitle_filename} is missing!')
+        input()
         sys.exit()
+
+    font_folder = os.path.join(os.path.dirname(subtitle_filename), 'fonts')
 
     # First, find all installed fonts...
     installed_font_ttfs = windows.find_installed_ttfs()
@@ -34,6 +36,7 @@ def main():
         # All fonts are installed, let's save the fonts into a separate folder!
         install.install_fonts(font_folder, subtitle_fonts, installed_fonts)
         print('Installed fonts to', os.path.abspath(font_folder))
+        input()
         return
     
     # Not all fonts are found, let's print the ones that are missing
