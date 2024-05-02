@@ -1,0 +1,5 @@
+*.ass
+fonts
+
+*.py[c|o]
+__pycache__
